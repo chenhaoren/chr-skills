@@ -8,45 +8,106 @@ Claude Code 个人技能集。涵盖源码分析、Agent 工作流、代码审�
 |------|------|------|
 | [source-code-analyzer](source-code-analyzer/SKILL.md) | 分析 | 源码阅读拆解：从零理解不熟悉的代码库，分层深入分析项目结构、运行流程与核心设计 |
 
+---
+
 ## 安装
 
-```bash
-# 安装全部技能
-npx @anthropic-ai/claude-code add chenhaoren/chr-skills
+### 方式一：通过 GitHub 安装（推荐）
 
-# 安装单个技能
-npx @anthropic-ai/claude-code add chenhaoren/chr-skills/<skill-name>
+一键安装全部技能：
+
+```bash
+npx @anthropic-ai/claude-code add chenhaoren/chr-skills
 ```
+
+安装单个技能：
+
+```bash
+npx @anthropic-ai/claude-code add chenhaoren/chr-skills/source-code-analyzer
+```
+
+### 方式二：从源码安装
+
+适用场景：想自己修改技能、调试、或离线使用。
+
+```bash
+# 1. 克隆仓库
+git clone https://github.com/chenhaoren/chr-skills.git
+cd chr-skills
+
+# 2. 安装到 Claude Code（会复制技能到系统 skills 目录）
+npx @anthropic-ai/claude-code add ./source-code-analyzer
+
+# 3. 或在会话中直接引用目录（不安装，仅当前会话可用）
+npx @anthropic-ai/claude-code --add-dir ./source-code-analyzer
+
+# 4. 或做软链接到 Claude Code 的 skills 目录，修改即生效
+ln -s "$PWD"/source-code-analyzer ~/.claude/skills/source-code-analyzer
+```
+
+> **软链接方式的好处**：修改本地的 `SKILL.md` 后，下次使用 Claude Code 会自动生效，适合技能开发和调试。
+
+---
 
 ## 使用
 
-安装后，在 Claude Code 中通过 `/` 或自然语言触发对应技能：
+技能安装后有两种触发方式：
+
+### 1. 斜杠命令
+
+在 Claude Code 中直接输入：
 
 ```
-/your-skill-name
-"帮我拆解这个项目"
-"开始代码审查"
+/source-code-analyzer
 ```
+
+Claude 会加载对应技能的指令。
+
+### 2. 自然语言触发
+
+说出技能的触发场景，Claude 会自动匹配：
+
+```
+"帮我拆解这个项目"
+"分析一下这个源码的结构"
+"这个代码库是怎么实现的"
+```
+
+每个技能在 `SKILL.md` 的 `description` 字段定义了触发关键词，Claude 会根据上下文自动匹配合适的技能。
+
+### 3. 查看已安装的技能
+
+```bash
+# 列出所有已安装技能
+ls ~/.claude/skills/
+
+# 查看当前 Claude Code 支持哪些技能
+npx @anthropic-ai/claude-code agents
+```
+
+---
 
 ## 项目结构
 
 ```
 chr-skills/
-├── README.md
+├── README.md               # 项目说明
 ├── .gitignore
 ├── <skill-name>/
-│   ├── SKILL.md          # 技能定义文件（必需）
-│   └── ...               # 技能配套资源（可选）
-└── <other-assets>/       # agent / hook / 脚本等
+│   ├── SKILL.md            # 技能定义文件（必需）
+│   └── ...                 # 配套资源（可选）
+└── <other-assets>/         # agent / hook / 脚本等
     └── ...
 ```
 
-项目中每个技能独立目录，互不依赖。其他类型资源按用途组织。
+每个技能独立目录，互不依赖。非 skill 资源按用途组织。
+
+---
 
 ## 添加新技能
 
-1. 在根目录下创建 `<skill-name>/SKILL.md`
-2. 在 `SKILL.md` 顶部添加 frontmatter：
+1. 创建 `<skill-name>/SKILL.md`
+2. 顶部添加 frontmatter：
 
 ```yaml
 ---
