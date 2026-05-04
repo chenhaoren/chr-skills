@@ -466,6 +466,11 @@ src/
 
 ## 配合使用
 
-- 拆解完成后想自己实现 → **必备子技能：** superpowers:brainstorming + superpowers:writing-plans
-- 拆解过程中发现 bug → **必备子技能：** superpowers:systematic-debugging
-- 拆解完成后要写教学文档 → 参考本技能第五遍的输出格式
+以下技能可与本技能搭配使用（需单独安装，参见 [skills-lab](https://github.com/chenhaoren/skills-lab)）：
+
+| 场景 | 推荐技能 | 作用 |
+|------|---------|------|
+| 拆解后要自己实现 | `brainstorming` + `writing-plans` | 梳理需求、编写实现计划 |
+| 拆解中发现 bug | `systematic-debugging` | 系统化定位和修复问题 |
+| 实现后审查代码 | `requesting-code-review` + `receiving-code-review` | 代码审查 |
+| 拆解后写教学文档 | — | 参考本技能第五遍的输出格式 |
