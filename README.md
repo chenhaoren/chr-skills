@@ -1,5 +1,7 @@
 # chr-skills
 
+[![skills.sh](https://skills.sh/b/chenhaoren/chr-skills)](https://skills.sh/chenhaoren/chr-skills)
+
 Claude Code 个人技能集。涵盖源码分析、Agent 工作流、代码审查、开发计划等场景。
 
 ## 技能列表
@@ -14,10 +16,12 @@ Claude Code 个人技能集。涵盖源码分析、Agent 工作流、代码审�
 
 ### 方式一：通过 GitHub 安装（推荐）
 
-一键安装全部技能：
-
 ```bash
+# Claude Code
 npx @anthropic-ai/claude-code add chenhaoren/chr-skills
+
+# 或使用通用 skills CLI
+npx skills add chenhaoren/chr-skills
 ```
 
 安装单个技能：
