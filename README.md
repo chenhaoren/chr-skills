@@ -26,7 +26,27 @@ npx @anthropic-ai/claude-code add chenhaoren/chr-skills
 npx @anthropic-ai/claude-code add chenhaoren/chr-skills/source-code-analyzer
 ```
 
-### 方式二：从源码安装
+### 方式二：从指定分支安装
+
+适用场景：想体验开发中的功能、测试 PR、或使用某个历史版本。
+
+```bash
+# 从指定分支安装全部技能
+npx @anthropic-ai/claude-code add chenhaoren/chr-skills#branch-name
+
+# 从指定分支安装单个技能
+npx @anthropic-ai/claude-code add chenhaoren/chr-skills/source-code-analyzer#branch-name
+
+# 示例：从 dev 分支安装
+npx @anthropic-ai/claude-code add chenhaoren/chr-skills#dev
+
+# 示例：从 feature 分支安装
+npx @anthropic-ai/claude-code add chenhaoren/chr-skills#feat-new-skill
+```
+
+> `#` 后面跟分支名，与 GitHub 的 URL 片段标识符语法一致。
+
+### 方式三：从源码安装
 
 适用场景：想自己修改技能、调试、或离线使用。
 
